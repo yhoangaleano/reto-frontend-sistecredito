@@ -1,0 +1,17 @@
+<div class="btn-group ml-2">
+
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-complement" id="dropdownUserInfo" ngbDropdownToggle>
+            @yhoangaleano
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownUserInfo">
+            <span ngbDropdownItem [disabled]="true">
+                <span class="d-block">Yhoan Andrés Galeano Urrea</span>
+                <span class="d-block">yhoangaleano@gmail.com</span>
+            </span>
+            <div class="dropdown-divider"></div>
+            <a ngbDropdownItem routerLink="/gestion-creditos"><em class="bx bx-list-ul"></em>Gestión de créditos</a>
+            <button ngbDropdownItem><em class="bx bx-log-out"></em> Cerrar sesión</button>
+        </div>
+    </div>
+</div>

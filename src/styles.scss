@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+// FONT FAMILY
+$font-family-base: Montserrat;
+
+$theme-colors: ("main": #11BAB6, "side": #071941, "tertiary": #5F7A9F, "complement":#A3BD30, "alternative":#071842);
+
+$input-focus-border-color: var(--main);
+$input-border-color: var(--main) !default;
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
