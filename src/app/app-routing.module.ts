@@ -8,7 +8,12 @@ const appRoutes: Routes = [
       .then(
         m => m.GestionCreditosModule
       )
-  }
+  },
+  {
+    path      : '',
+    redirectTo: 'gestion-creditos',
+    pathMatch : 'full',
+  },
 ];
 
 @NgModule({
