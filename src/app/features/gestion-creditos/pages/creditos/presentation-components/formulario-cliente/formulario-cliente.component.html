@@ -9,13 +9,14 @@
                 <label for="txtNombres">Nombres</label>
                 <input type="text" class="form-control" id="txtNombres" placeholder="Ejm: Yhoan Andres"
                     formControlName="nombres">
+
                 <div appNgxErrors="nombres">
-                    <div appNgxError="nombres" ngxError="required" when="dirty">
-                        <small class="text-danger">
-                            * Campo requerido
-                        </small>
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="col-md-4">
@@ -23,6 +24,12 @@
                 <label for="txtApellidos">Apellidos</label>
                 <input type="text" class="form-control" id="txtApellidos" placeholder="Ejm: Galeano Urrea"
                     formControlName="apellidos">
+                <div appNgxErrors="apellidos">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -30,6 +37,12 @@
                 <label for="txtCelular">Celular</label>
                 <input type="text" class="form-control" id="txtCelular" placeholder="Ejm: 3112346789"
                     formControlName="celular">
+                <div appNgxErrors="celular">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -37,6 +50,12 @@
                 <label for="txtCorreo">Correo electrónico</label>
                 <input type="text" class="form-control" id="txtCorreo" placeholder="Ejm: yagaleano@gmail.com"
                     formControlName="correo">
+                <div appNgxErrors="correo">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -48,6 +67,12 @@
                         *ngFor="let tipoIdentificacion of tiposIdentificacion; trackBy: trackByTiposIdentificacion">
                         {{tipoIdentificacion.descripcion}}</option>
                 </select>
+                <div appNgxErrors="tipoIdentificacion">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -55,6 +80,12 @@
                 <label for="txtIdentificacion">Identificación</label>
                 <input type="text" class="form-control" id="txtIdentificacion" placeholder="Ejm: 1234567890"
                     formControlName="identificacion">
+                <div appNgxErrors="identificacion">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

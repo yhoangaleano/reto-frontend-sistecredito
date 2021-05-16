@@ -16,3 +16,5 @@ export const TIPOS_IDENTIFICACION = [
         descripcion: 'Pasaporte'
     }
 ];
+
+export const TIPOS_IDENTIFICACION_NUMERICAS = ['CC', 'NIT'];
