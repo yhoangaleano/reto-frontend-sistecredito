@@ -1,0 +1,34 @@
+<form [formGroup]="formularioDireccion" class="mb-4">
+    <h5 class="text-side">Ubicación</h5>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="txtDireccion">Dirección</label>
+                <input type="text" class="form-control" id="txtDireccion"
+                    placeholder="Ejm: Calle 77 cc # 78b - 45 int 201" formControlName="direccion">
+                <div appNgxErrors="direccion">
+                    <div appNgxError="direccion" ngxError="required" when="dirty">
+                        <small class="text-danger">
+                            * Campo requerido
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="txtCiudad">Ciudad</label>
+                <input type="text" class="form-control" id="txtCiudad" placeholder="Ejm: Medellín"
+                    formControlName="ciudad">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="txtBarrio">Barrio</label>
+                <input type="text" class="form-control" id="txtBarrio" placeholder="Ejm: Robledo Bello Horizonte"
+                    formControlName="barrio">
+            </div>
+        </div>
+    </div>
+</form>

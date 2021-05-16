@@ -1,0 +1,62 @@
+<form [formGroup]="formularioCliente" class="mb-4">
+
+    <h5 class="text-side">Información cliente</h5>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtNombres">Nombres</label>
+                <input type="text" class="form-control" id="txtNombres" placeholder="Ejm: Yhoan Andres"
+                    formControlName="nombres">
+                <div appNgxErrors="nombres">
+                    <div appNgxError="nombres" ngxError="required" when="dirty">
+                        <small class="text-danger">
+                            * Campo requerido
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtApellidos">Apellidos</label>
+                <input type="text" class="form-control" id="txtApellidos" placeholder="Ejm: Galeano Urrea"
+                    formControlName="apellidos">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtCelular">Celular</label>
+                <input type="text" class="form-control" id="txtCelular" placeholder="Ejm: 3112346789"
+                    formControlName="celular">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtCorreo">Correo electrónico</label>
+                <input type="text" class="form-control" id="txtCorreo" placeholder="Ejm: yagaleano@gmail.com"
+                    formControlName="correo">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="slTipoIdentificacion">Tipo identificación</label>
+                <select class="form-control" id="slTipoIdentificacion" formControlName="tipoIdentificacion">
+                    <option value="">Seleccione tipo de identificación</option>
+                    <option [value]="tipoIdentificacion.valor"
+                        *ngFor="let tipoIdentificacion of tiposIdentificacion; trackBy: trackByTiposIdentificacion">
+                        {{tipoIdentificacion.descripcion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtIdentificacion">Identificación</label>
+                <input type="text" class="form-control" id="txtIdentificacion" placeholder="Ejm: 1234567890"
+                    formControlName="identificacion">
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,42 @@
+{
+    "creditos": [
+        {
+            "id": 1,
+            "valorCredito": 7800000,
+            "numeroCuotas": 24,
+            "cliente": {
+                "id": 10,
+                "nombres": "Yhoan Andres",
+                "apellidos": "Galeano Urrea",
+                "celular": "3224536781",
+                "correo": "yagaleano@gmail.com",
+                "tipoIdentificacion": "CC",
+                "identificacion": "1234567890",
+                "direccion": "Calle 77 cc # 37 a 24 int 201",
+                "ubicacion": {
+                    "ciudad": "Medellín",
+                    "barrio": "Robledo Bello Horizonte"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "valorCredito": 5670000,
+            "numeroCuotas": 36,
+            "cliente": {
+                "id": 2,
+                "nombres": "Dulce Maria",
+                "apellidos": "Galeano Martinez",
+                "celular": "3209876534",
+                "correo": "dulcemariagaleanomartinez@gmail.com",
+                "tipoIdentificacion": "CC",
+                "identificacion": "1234567890",
+                "direccion": "Calle 77 ab # 86 a 24 int 201",
+                "ubicacion": {
+                    "ciudad": "Medellín",
+                    "barrio": "Robledo Bello Horizonte"
+                }
+            }
+        }
+    ]
+}

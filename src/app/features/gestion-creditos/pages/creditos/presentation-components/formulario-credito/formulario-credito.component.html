@@ -1,1 +1,44 @@
-<p>formulario-credito works!</p>
+<div class="row px-3">
+    <div class="col-md-12">
+
+        <form [formGroup]="formularioCredito" class="px-4 py-3">
+
+            <app-formulario-cliente></app-formulario-cliente>
+            <app-formulario-direccion></app-formulario-direccion>
+
+            <h5 class="text-side">Información crédito</h5>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="txtValorCredito">Valor crédito</label>
+                        <input type="text" class="form-control" id="txtValorCredito" placeholder="Ejm: 7800000"
+                            formControlName="valorCredito">
+                        <div appNgxErrors="valorCredito">
+                            <div appNgxError="valorCredito" ngxError="required" when="dirty">
+                                <small class="text-danger">
+                                    * Campo requerido
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="txtNumeroCuotas">Número de cuotas</label>
+                        <input type="number" class="form-control" id="txtNumeroCuotas" placeholder="Ejm: 36"
+                            formControlName="numeroCuotas">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<hr>
+<div class="row px-3">
+    <div class="col-md-12 text-right">
+        <button class="btn btn-sm btn-outline-secondary mr-1" (click)="cancelar()">Cancelar</button>
+        <button class="btn btn-sm btn-outline-main" (click)="guardarCredito()">Guardar crédito</button>
+    </div>
+</div>

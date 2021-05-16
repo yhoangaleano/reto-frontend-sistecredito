@@ -2,19 +2,24 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-
                 <div class="row">
                     <div class="col-md-12">
-
+                        <button class="btn btn-outline-main" (click)="abrirModalFormularioCredito()">
+                            <em class="bi bi-plus"></em> Crear nuevo crédito
+                        </button>
+                        <app-modal-formulario-credito [textoTituloModal]="textoTituloModal" #modalFormularioCredito>
+                            <ng-template #contenidoCuerpoModalTemplate>
+                                <app-formulario-credito (guardarCreditoEmitter)="cerrarModal()"
+                                    (cancelarEmitter)="cerrarModal()"></app-formulario-credito>
+                            </ng-template>
+                        </app-modal-formulario-credito>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <app-tabla-creditos></app-tabla-creditos>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
