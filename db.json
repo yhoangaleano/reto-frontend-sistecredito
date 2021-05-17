@@ -99,6 +99,26 @@
         "valorCredito": 34000000,
         "numeroCuotas": 60
       }
+    },
+    {
+      "id": 6,
+      "cliente": {
+        "nombres": "Andrea",
+        "apellidos": "Suarez Perez",
+        "celular": "3102525255",
+        "correo": "yhoan@gmail.com",
+        "tipoIdentificacion": "CC",
+        "identificacion": "1212122"
+      },
+      "ubicacion": {
+        "direccion": "Calle 78 # 67 3 int 302",
+        "ciudad": "Medellín",
+        "barrio": "Castilla"
+      },
+      "credito": {
+        "valorCredito": 6700000,
+        "numeroCuotas": 40
+      }
     }
   ]
 }

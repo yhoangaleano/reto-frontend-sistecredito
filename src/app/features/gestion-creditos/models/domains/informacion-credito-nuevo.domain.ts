@@ -7,7 +7,4 @@ export class InformacionCreditoNuevo {
     public credito!: CreditoDomain;
     public cliente!: ClienteDomain;
     public ubicacion!: UbicacionDomain;
-    constructor() {
-        this.id = null;
-    }
 }

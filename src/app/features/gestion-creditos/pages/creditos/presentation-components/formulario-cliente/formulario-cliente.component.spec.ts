@@ -15,14 +15,14 @@ describe('FormularioClienteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormularioClienteComponent ],
+      declarations: [FormularioClienteComponent],
       imports: [
         ReactiveFormsModule,
         FormsModule,
         NgxErrorsModule,
       ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -34,5 +34,17 @@ describe('FormularioClienteComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Debería retornar la expresión regular para validar solo números', () => {
+    // tslint:disable-next-line: no-string-literal
+    const result = component['obtenerExpersionRegularValidacionIdentificacion']('CC');
+    expect(result).toEqual('^[0-9]+$');
+  });
+
+  it('Debería retornar la expresión regular para validar letras y números', () => {
+    // tslint:disable-next-line: no-string-literal
+    const result = component['obtenerExpersionRegularValidacionIdentificacion']('CE');
+    expect(result).toEqual('^[a-zA-Z0-9]+$');
   });
 });

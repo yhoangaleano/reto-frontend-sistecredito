@@ -6,9 +6,13 @@ import {
 
 import { CreditosService } from './creditos.service';
 
+import { InformacionCreditoNuevo } from '@features/gestion-creditos/models';
+
+
 describe('Servicio CreditosService', () => {
   let httpTestingController: HttpTestingController;
   let creditosService: CreditosService;
+  let informacionCreditoNuevo: InformacionCreditoNuevo;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,6 +21,28 @@ describe('Servicio CreditosService', () => {
     });
     creditosService = TestBed.inject(CreditosService);
     httpTestingController = TestBed.inject(HttpTestingController);
+
+    informacionCreditoNuevo = {
+      id: 1,
+      credito: {
+        valorCredito: 7800000,
+        numeroCuotas: 24
+      },
+      cliente: {
+        nombres: 'Yhoan Andres',
+        apellidos: 'Galeano Urrea',
+        celular: '3224536781',
+        correo: 'yagaleano@gmail.com',
+        tipoIdentificacion: 'CC',
+        identificacion: '1234567890'
+      },
+      ubicacion: {
+        direccion: 'Calle 77 cc # 37 a 24 int 201',
+        ciudad: 'Medellín',
+        barrio: 'Robledo Bello Horizonte'
+      }
+    };
+
   });
 
   afterEach(() => {
@@ -29,26 +55,7 @@ describe('Servicio CreditosService', () => {
 
   it('Debería retornar lista de créditos', () => {
     const mockInformacionCreditosNuevos = [
-      {
-        id: 1,
-        credito: {
-          valorCredito: 7800000,
-          numeroCuotas: 24
-        },
-        cliente: {
-          nombres: 'Yhoan Andres',
-          apellidos: 'Galeano Urrea',
-          celular: '3224536781',
-          correo: 'yagaleano@gmail.com',
-          tipoIdentificacion: 'CC',
-          identificacion: '1234567890'
-        },
-        ubicacion: {
-          direccion: 'Calle 77 cc # 37 a 24 int 201',
-          ciudad: 'Medellín',
-          barrio: 'Robledo Bello Horizonte'
-        }
-      }
+      informacionCreditoNuevo
     ];
 
     creditosService.obtenerInformacionCreditosNuevos().subscribe(informacionCreditosNuevos => {
@@ -60,6 +67,48 @@ describe('Servicio CreditosService', () => {
 
     // tslint:disable-next-line: no-string-literal
     const req = httpTestingController.expectOne(creditosService['urlApi']);
+    expect(req.request.method).toBe('GET');
     req.flush(mockInformacionCreditosNuevos);
+  });
+
+  it('Debería retornar crear un nuevo crédito', () => {
+    const mockInformacionCreditoNuevo = { ...informacionCreditoNuevo };
+    const informacionCreditoNuevoRequest = { ...informacionCreditoNuevo, id: null };
+
+    creditosService.crearInformacionCreditosNuevos(informacionCreditoNuevoRequest).subscribe(
+      informacionCreditoNuevoResponse => {
+      expect(informacionCreditoNuevoResponse.id).toEqual(1);
+      expect(informacionCreditoNuevoResponse.cliente.identificacion).toEqual(
+        '1234567890'
+      );
+    }
+    );
+
+    // tslint:disable-next-line: no-string-literal
+    const req = httpTestingController.expectOne(creditosService['urlApi']);
+    expect(req.request.method).toBe('POST');
+    req.flush(mockInformacionCreditoNuevo);
+  });
+
+  it('Debería retornar actualizar un nuevo crédito', () => {
+    const mockInformacionCreditoNuevo = { ...informacionCreditoNuevo };
+    mockInformacionCreditoNuevo.cliente.identificacion = '1234567800';
+
+    const informacionCreditoNuevoRequest = { ...informacionCreditoNuevo, id: null };
+    informacionCreditoNuevoRequest.cliente.identificacion = '1234567800';
+
+    creditosService.modificarInformacionCreditosNuevos(informacionCreditoNuevoRequest).subscribe(
+      informacionCreditoNuevoResponse => {
+      expect(informacionCreditoNuevoResponse.id).toEqual(1);
+      expect(informacionCreditoNuevoResponse.cliente.identificacion).toEqual(
+        '1234567800'
+      );
+    }
+    );
+
+    // tslint:disable-next-line: no-string-literal
+    const req = httpTestingController.expectOne(`${creditosService['urlApi']}${informacionCreditoNuevoRequest.id}`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockInformacionCreditoNuevo);
   });
 });

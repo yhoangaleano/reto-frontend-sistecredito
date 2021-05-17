@@ -112,6 +112,7 @@ export class FormularioCreditosNuevosComponent implements OnInit {
       informacionCreditoNuevo = { ...this.informacionCreditoNuevoEditar } as InformacionCreditoNuevo;
     } else {
       informacionCreditoNuevo = new InformacionCreditoNuevo();
+      informacionCreditoNuevo.id = null;
     }
     informacionCreditoNuevo.cliente = { ...this.obtenerClienteFormulario() };
     informacionCreditoNuevo.ubicacion = { ...this.obtenerUbicacionFormulario() };
