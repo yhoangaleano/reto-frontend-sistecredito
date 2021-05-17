@@ -21,4 +21,12 @@ export class CreditosService {
   public obtenerInformacionCreditosNuevos(): Observable<Array<InformacionCreditoNuevo>> {
     return this.httpClient.get<Array<InformacionCreditoNuevo>>(`${this.urlApi}`);
   }
+
+  public crearInformacionCreditosNuevos(informacionCreditoNuevo: InformacionCreditoNuevo): Observable<InformacionCreditoNuevo> {
+    return this.httpClient.post<InformacionCreditoNuevo>(`${this.urlApi}`, informacionCreditoNuevo);
+  }
+
+  public modificarInformacionCreditosNuevos(informacionCreditoNuevo: InformacionCreditoNuevo): Observable<InformacionCreditoNuevo> {
+    return this.httpClient.put<InformacionCreditoNuevo>(`${this.urlApi}${informacionCreditoNuevo.id}`, informacionCreditoNuevo);
+  }
 }
