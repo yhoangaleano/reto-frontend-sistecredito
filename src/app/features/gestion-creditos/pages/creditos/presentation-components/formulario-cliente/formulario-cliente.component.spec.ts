@@ -1,4 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+} from '@angular/forms';
+
+// Módulos internos
+import { NgxErrorsModule } from '@shared/directives';
 
 import { FormularioClienteComponent } from './formulario-cliente.component';
 
@@ -8,7 +15,12 @@ describe('FormularioClienteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormularioClienteComponent ]
+      declarations: [ FormularioClienteComponent ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NgxErrorsModule,
+      ],
     })
     .compileComponents();
   });
@@ -16,6 +28,7 @@ describe('FormularioClienteComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FormularioClienteComponent);
     component = fixture.componentInstance;
+    component.crearFormulario();
     fixture.detectChanges();
   });
 
