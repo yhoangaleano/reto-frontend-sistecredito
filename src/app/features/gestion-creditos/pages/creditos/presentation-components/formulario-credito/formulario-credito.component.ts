@@ -1,18 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-// NgxSpinner
-import { NgxSpinnerService } from 'ngx-spinner';
-
-// NgxToastr
-import { ToastrService } from 'ngx-toastr';
-
-// Servicios Utilidades
-import { ValidarFormulariosService } from '@shared/utils';
-
-// Componentes ViewChild
-import { FormularioClienteComponent } from './../formulario-cliente/formulario-cliente.component';
-import { FormularioDireccionComponent } from './../formulario-direccion/formulario-direccion.component';
+// Módulos internos
+import { VALIDATION_ERRORS_MESSAGES } from '@shared/directives';
 
 @Component({
   selector: 'app-formulario-credito',
@@ -21,63 +11,24 @@ import { FormularioDireccionComponent } from './../formulario-direccion/formular
 })
 export class FormularioCreditoComponent implements OnInit {
 
-  @Output()
-  public guardarCreditoEmitter: EventEmitter<void>;
-
-  @Output()
-  public cancelarEmitter: EventEmitter<void>;
-
-  @ViewChild(FormularioClienteComponent, { static: true })
-  formularioCliente!: FormularioClienteComponent;
-
-  @ViewChild(FormularioDireccionComponent, { static: true })
-  formularioDireccion!: FormularioDireccionComponent;
-
   public formularioCredito!: FormGroup;
+  public mensajesErrorValidacion!: any;
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly spinner: NgxSpinnerService,
-    private readonly toastr: ToastrService,
-    private readonly validarFormularios: ValidarFormulariosService,
   ) {
-    this.guardarCreditoEmitter = new EventEmitter<void>();
-    this.cancelarEmitter = new EventEmitter<void>();
+    this.mensajesErrorValidacion = VALIDATION_ERRORS_MESSAGES;
   }
 
   ngOnInit(): void {
-    this.crearFormulario();
   }
 
   crearFormulario(): FormGroup {
     this.formularioCredito = this.fb.group({
-      valorCredito: ['', [Validators.required]],
-      numeroCuotas: ['', [Validators.required]],
-      cliente: this.formularioCliente.crearFormulario(),
-      ubicacion: this.formularioDireccion.crearFormulario(),
+      valorCredito: ['', [Validators.required, Validators.min(1)]],
+      numeroCuotas: ['', [Validators.required, Validators.min(1), Validators.max(72)]],
     });
     return this.formularioCredito;
-  }
-
-  guardarCredito(): void {
-    this.validarFormularios.validarFormulario(this.formularioCredito);
-    if (this.formularioCredito.valid) {
-      this.guardarCreditoEmitter.emit();
-    } else {
-      this.toastr.error('everything is broken', 'Major Error', {
-        timeOut: 3000,
-      });
-    }
-
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 500);
-  }
-
-  cancelar(): void {
-    this.cancelarEmitter.emit();
   }
 
 }

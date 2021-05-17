@@ -1,4 +1,4 @@
-export interface ListaBasicaPresenter<T> {
-    valor: T;
-    descripcion: string;
+export class ListaBasicaPresenter<T> {
+    public valor!: T;
+    public descripcion!: string;
 }

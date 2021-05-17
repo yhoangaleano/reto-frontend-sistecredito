@@ -44,8 +44,6 @@ export class FormularioClienteComponent implements OnInit, OnDestroy {
     this.suscripciones.push(
       this.formularioCliente.get('tipoIdentificacion')?.valueChanges.subscribe({
         next: (valor: string) => {
-          const valorIdentificacion = this.formularioCliente.get('identificacion')?.value;
-          this.formularioCliente.get('identificacion')?.reset();
           this.formularioCliente.get('identificacion')?.clearValidators();
           this.formularioCliente.get('identificacion')?.setValidators(
             [
@@ -57,10 +55,7 @@ export class FormularioClienteComponent implements OnInit, OnDestroy {
           );
           this.formularioCliente.get('identificacion')?.markAsDirty();
           this.formularioCliente.get('identificacion')?.markAsTouched();
-          this.formularioCliente.get('identificacion')?.updateValueAndValidity({ emitEvent: false });
-          if (valorIdentificacion) {
-            this.formularioCliente.get('identificacion')?.setValue(valorIdentificacion);
-          }
+          this.formularioCliente.get('identificacion')?.updateValueAndValidity();
         }
       })
     );
@@ -76,12 +71,12 @@ export class FormularioClienteComponent implements OnInit, OnDestroy {
 
   crearFormulario(): FormGroup {
     this.formularioCliente = this.fb.group({
-      nombres: ['', [Validators.required, Validators.pattern('^[A-Za-zÑñ]+([ ][A-Za-zÑñ]+)*$')]],
-      apellidos: ['', [Validators.required, Validators.pattern('^[A-Za-zÑñ]+([ ][A-Za-zÑñ]+)*$')]],
+      nombres: ['', [Validators.required, Validators.pattern('^[A-Za-zÑñ]+([ ][A-Za-zÑñ]+)*$'), Validators.maxLength(50)]],
+      apellidos: ['', [Validators.required, Validators.pattern('^[A-Za-zÑñ]+([ ][A-Za-zÑñ]+)*$'), Validators.maxLength(50)]],
       celular: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(10)]],
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
       tipoIdentificacion: ['', [Validators.required]],
-      identificacion: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      identificacion: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(15)]],
     });
 
     return this.formularioCliente;

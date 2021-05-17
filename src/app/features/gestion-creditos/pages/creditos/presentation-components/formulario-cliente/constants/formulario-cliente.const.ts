@@ -12,7 +12,7 @@ export const TIPOS_IDENTIFICACION = [
         descripcion: 'Número de Identificación Tributaría'
     },
     {
-        valor: 'PAS',
+        valor: 'PA',
         descripcion: 'Pasaporte'
     }
 ];

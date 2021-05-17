@@ -1,0 +1,20 @@
+<div class="row px-3">
+    <div class="col-md-12">
+
+        <form [formGroup]="formularioCreditosNuevos" class="px-4 py-3">
+
+            <app-formulario-cliente></app-formulario-cliente>
+            <app-formulario-direccion></app-formulario-direccion>
+            <app-formulario-credito></app-formulario-credito>
+
+        </form>
+
+    </div>
+</div>
+<hr>
+<div class="row px-3">
+    <div class="col-md-12 text-right">
+        <button class="btn btn-sm btn-outline-secondary mr-1" (click)="cancelar()">Cancelar</button>
+        <button class="btn btn-sm btn-outline-main" (click)="guardarCredito()">Guardar crédito</button>
+    </div>
+</div>

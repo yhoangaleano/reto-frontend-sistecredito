@@ -1,1 +1,104 @@
-<p>tabla-creditos works!</p>
+<form>
+
+    <div class="form-group">
+        <div class="input-group mt-3 mb-3">
+            <input id="txtFiltro" type="text" class="form-control" placeholder="Buscar:" aria-label="Buscar:"
+                aria-describedby="txtFiltro" [formControl]="filtro">
+            <div class="input-group-append">
+                <span class="input-group-text bg-main text-white" id="txtFiltro">
+                    <em class="bi bi-search"></em>
+                </span>
+            </div>
+        </div>
+        <small id="txtFiltroAyuda" class="form-text text-muted">Puedes buscar por Identificación, nombre completo o
+            correo
+            electrónico.</small>
+    </div>
+</form>
+
+<div class="table-responsive">
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="border border-main text-center">Identificación</th>
+                <th scope="col" class="border border-main text-center">Nombre completo</th>
+                <th scope="col" class="border border-main text-center">Celular</th>
+                <th scope="col" class="border border-main text-center">Correo electrónico</th>
+                <th scope="col" class="border border-main text-center">Dirección</th>
+                <th scope="col" class="border border-main text-center">Ciudad</th>
+                <th scope="col" class="border border-main text-center">Barrio</th>
+                <th scope="col" class="border border-main text-center">Valor crédito</th>
+                <th scope="col" class="border border-main text-center">Número cuotas</th>
+                <th scope="col" class="border border-main text-center">
+                    <em class="bi bi-pencil"></em>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <ng-container *ngIf="(informacionCreditosNuevosFiltrado$ | async)?.length; then thenTemplate; else elseTemplate">
+            </ng-container>
+            <ng-template #thenTemplate>
+                <tr *ngFor="let informacionCreditoNuevo of informacionCreditosNuevosFiltrado$ | async">
+                    <td class="text-center">
+                        {{informacionCreditoNuevo?.cliente?.tipoIdentificacion || '' | tipoDocumento}} -
+                        <ngb-highlight [result]="informacionCreditoNuevo?.cliente?.identificacion | currency:'':'':'.0'"
+                            [term]="filtro.value">
+                        </ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight
+                            [result]="informacionCreditoNuevo?.cliente?.nombres + ' ' + informacionCreditoNuevo?.cliente?.apellidos"
+                            [term]="filtro.value"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="informacionCreditoNuevo?.cliente?.celular" [term]="filtro.value">
+                        </ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="informacionCreditoNuevo?.cliente?.correo" [term]="filtro.value">
+                        </ngb-highlight>
+                    </td>
+                    <td>
+                        {{informacionCreditoNuevo?.ubicacion?.direccion}}
+                    </td>
+                    <td>
+                        {{informacionCreditoNuevo?.ubicacion?.ciudad}}
+                    </td>
+                    <td>
+                        {{informacionCreditoNuevo?.ubicacion?.barrio}}
+                    </td>
+                    <td class="text-right">
+                        {{informacionCreditoNuevo?.credito?.valorCredito | currency:'':'':'.0'}}
+                    </td>
+                    <td class="text-right">
+                        {{informacionCreditoNuevo?.credito?.numeroCuotas}}
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-main" placement="top" ngbTooltip="Editar" (click)="editarInformacionCreditoNuevo(informacionCreditoNuevo)">
+                            <em class="bi bi-pencil"></em>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template #elseTemplate>
+                <tr>
+                    <ng-container *ngIf="filtro.value !== ''; then thenTemplate; else elseTemplate"></ng-container>
+                    <ng-template #thenTemplate>
+                        <th colspan="10" class="text-center">
+                            No se encuentran datos relacionados a la búsqueda.
+                        </th>
+                    </ng-template>
+                    <ng-template #elseTemplate>
+                        <th colspan="10" class="text-center">
+                            No se encuentran datos disponibles.
+                        </th>
+                    </ng-template>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+</div>

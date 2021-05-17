@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Main Layout Module
 import { MainLayoutModule } from './main-layout/main-layout.module';
 
+// Interceptores
+import { INTERCEPTORS } from './interceptors';
+
 @NgModule({
   declarations: [
   ],
@@ -16,6 +19,9 @@ import { MainLayoutModule } from './main-layout/main-layout.module';
   exports: [
     MainLayoutModule,
   ],
+  providers: [
+    ...INTERCEPTORS
+  ]
 })
 export class CoreModule {
   constructor(

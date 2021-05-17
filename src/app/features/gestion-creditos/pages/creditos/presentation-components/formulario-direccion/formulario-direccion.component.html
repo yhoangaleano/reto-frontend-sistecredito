@@ -1,4 +1,4 @@
-<form [formGroup]="formularioDireccion" class="mb-4">
+<form [formGroup]="formularioDireccion" class="mb-3">
     <h5 class="text-side">Ubicación</h5>
     <hr>
     <div class="row">
@@ -8,10 +8,9 @@
                 <input type="text" class="form-control" id="txtDireccion"
                     placeholder="Ejm: Calle 77 cc # 78b - 45 int 201" formControlName="direccion">
                 <div appNgxErrors="direccion">
-                    <div appNgxError="direccion" ngxError="required" when="dirty">
-                        <small class="text-danger">
-                            * Campo requerido
-                        </small>
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
                     </div>
                 </div>
             </div>
@@ -21,6 +20,12 @@
                 <label for="txtCiudad">Ciudad</label>
                 <input type="text" class="form-control" id="txtCiudad" placeholder="Ejm: Medellín"
                     formControlName="ciudad">
+                <div appNgxErrors="ciudad">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -28,6 +33,12 @@
                 <label for="txtBarrio">Barrio</label>
                 <input type="text" class="form-control" id="txtBarrio" placeholder="Ejm: Robledo Bello Horizonte"
                     formControlName="barrio">
+                <div appNgxErrors="barrio">
+                    <div appNgxError *ngFor="let mensajeError of mensajesErrorValidacion" [ngxError]="mensajeError.name"
+                        [when]="mensajeError.rules">
+                        <small class="text-danger">{{ mensajeError.text }}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

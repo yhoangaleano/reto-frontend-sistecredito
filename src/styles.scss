@@ -9,3 +9,7 @@ $input-border-color: var(--main) !default;
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.ngb-highlight {
+    color: var(--main);
+}

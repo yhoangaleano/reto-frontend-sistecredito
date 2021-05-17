@@ -2,40 +2,82 @@
     "creditos": [
         {
             "id": 1,
-            "valorCredito": 7800000,
-            "numeroCuotas": 24,
+            "credito": {
+                "valorCredito": 7800000,
+                "numeroCuotas": 24
+            },
             "cliente": {
-                "id": 10,
                 "nombres": "Yhoan Andres",
                 "apellidos": "Galeano Urrea",
                 "celular": "3224536781",
                 "correo": "yagaleano@gmail.com",
                 "tipoIdentificacion": "CC",
-                "identificacion": "1234567890",
+                "identificacion": "1234567890"
+            },
+            "ubicacion": {
                 "direccion": "Calle 77 cc # 37 a 24 int 201",
-                "ubicacion": {
-                    "ciudad": "Medellín",
-                    "barrio": "Robledo Bello Horizonte"
-                }
+                "ciudad": "Medellín",
+                "barrio": "Robledo Bello Horizonte"
             }
         },
         {
             "id": 2,
-            "valorCredito": 5670000,
-            "numeroCuotas": 36,
+            "credito": {
+                "valorCredito": 5670000,
+                "numeroCuotas": 36
+            },
             "cliente": {
-                "id": 2,
                 "nombres": "Dulce Maria",
                 "apellidos": "Galeano Martinez",
                 "celular": "3209876534",
-                "correo": "dulcemariagaleanomartinez@gmail.com",
+                "correo": "dulcegaleano@gmail.com",
                 "tipoIdentificacion": "CC",
-                "identificacion": "1234567890",
-                "direccion": "Calle 77 ab # 86 a 24 int 201",
-                "ubicacion": {
-                    "ciudad": "Medellín",
-                    "barrio": "Robledo Bello Horizonte"
-                }
+                "identificacion": "3093002332"
+            },
+            "ubicacion": {
+                "direccion": "Carrera 90c # 59b 32",
+                "ciudad": "Medellín",
+                "barrio": "Castilla"
+            }
+        },
+        {
+            "id": 3,
+            "credito": {
+                "valorCredito": 908800,
+                "numeroCuotas": 48
+            },
+            "cliente": {
+                "nombres": "Edilia",
+                "apellidos": "Urrea Monsalve",
+                "celular": "3108765432",
+                "correo": "ediliaurrea@gmail.com",
+                "tipoIdentificacion": "CE",
+                "identificacion": "4572829"
+            },
+            "ubicacion": {
+                "direccion": "Calle 98cc # 31 89",
+                "ciudad": "Medellín",
+                "barrio": "Laureles"
+            }
+        },
+        {
+            "id": 4,
+            "credito": {
+                "valorCredito": 1000000,
+                "numeroCuotas": 60
+            },
+            "cliente": {
+                "nombres": "Juan Felipe",
+                "apellidos": "Zapata Toro",
+                "celular": "3205431278",
+                "correo": "juanfe@gmail.com",
+                "tipoIdentificacion": "CC",
+                "identificacion": "1217882672"
+            },
+            "ubicacion": {
+                "direccion": "Calle 56bb # 27 03",
+                "ciudad": "Medellín",
+                "barrio": "Belén"
             }
         }
     ]
