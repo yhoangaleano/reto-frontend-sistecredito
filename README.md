@@ -1,10 +1,11 @@
 # SistecreditoPrueba
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
+Prueba frontend para sistecredito
 
-## Development server
+## Json server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para correr el proyecto lo primero que debemos hacer es correr el servidor de **json-server** que nos ayuda a trabajar como si tuviesemos una API Rest.
+Para esto debemos correr el comando: `npm run json-server` de esta manera ya tendremos la API corriendo. La API corre por el `http://localhost:3000`.
 
 ## Code scaffolding
 
