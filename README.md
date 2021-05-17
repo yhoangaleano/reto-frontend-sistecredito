@@ -1,6 +1,6 @@
 # Sistecrédito Reto frontend
 
-Reto frontend para sistecrédito. A continuación los pasos para correr el proyecto.
+Reto frontend para Sistecrédito. A continuación los pasos para correr el proyecto.
 
 ## 1. Instalar dependencias
 
